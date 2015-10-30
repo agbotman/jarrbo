@@ -5,5 +5,4 @@
 *.sock
 local_settings.py
 wsgi.py
-manage.py
 /init
