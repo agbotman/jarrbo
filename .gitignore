@@ -4,5 +4,4 @@
 *.pid
 *.sock
 local_settings.py
-wsgi.py
 /init
