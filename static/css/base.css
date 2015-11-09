@@ -21,3 +21,6 @@ body {
 .navbar-inverse .navbar-nav > .active > a:focus {
   background-color: #246BB2;
 }
+.btn {
+  background-color: #009933
+}

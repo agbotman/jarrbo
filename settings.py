@@ -108,6 +108,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 # Add application specific context processors to the default
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'bestuursmodel.context_processors.afdelingen',
+    'django.core.context_processors.request',
 )
 
 ##################

@@ -10,7 +10,6 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
                     {% include "bestuursmodel_navbar.html" %}
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown 1<span class="caret"></span></a>
@@ -39,7 +38,11 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../navbar/">Default</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'afmelden' %}">Afmelden</a></li>
+                    {% else %}    
+                        <li><a href="{% url 'aanmelden' %}?next={{request.path}}">Aanmelden</a></li>
+                    {% endif %}
 					<li><a href="../navbar-static-top/">Static top</a></li>
 					<li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
 				</ul>
