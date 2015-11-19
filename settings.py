@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'mptt',
     'sportlink',
     'crispy_forms',
+    'email_obfuscator',
 )
 
 MIDDLEWARE_CLASSES = (

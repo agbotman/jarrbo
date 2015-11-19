@@ -7,7 +7,8 @@ body {
 /* title */
 .navbar-inverse {
 #  background-color: #009933;
-  background-color: #66b2ff;
+# background-color: #66b2ff;
+  background-color: #ccccb3;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -34,4 +35,8 @@ body {
 .img-center {
     display: block;
     margin: 0 auto;
+}
+
+.img-right25 {
+    padding-right: 25px;
 }
