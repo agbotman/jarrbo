@@ -20,6 +20,9 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
+# Settings for django-registration
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
+
 # Crispy forms should use bootstrap3 markup
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -31,6 +34,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'jarrbo',
     'bestuursmodel',
     'mptt',
     'sportlink',

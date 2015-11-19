@@ -1,3 +1,5 @@
+{% load staticfiles %}
+        
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -6,8 +8,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">JARRBO</a>
-			</div>
+                <a href="/" class="pull-left"><img src="{% static "media/jarrbo_banner_50.png" %}"></a>
+<!--  				<a class="navbar-brand" href="/">JARRBO</a> -->
+                </a>
+                </div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
                     {% include "bestuursmodel_navbar.html" %}
@@ -39,12 +43,16 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'afmelden' %}">Afmelden</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="{% url 'auth_logout' %}">Afmelden</a></li>
+                                    <li><a href="{% url 'auth_password_change' %}">Wachtwoord wijzigen</a></li>
+                            </ul>
+                        </li>
                     {% else %}    
-                        <li><a href="{% url 'aanmelden' %}?next={{request.path}}">Aanmelden</a></li>
+                        <li><a href="{% url 'auth_login' %}?next={{request.path}}">Aanmelden</a></li>
                     {% endif %}
-					<li><a href="../navbar-static-top/">Static top</a></li>
-					<li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
 				</ul>
 			</div> <!--/.nav-collapse -->
 		</nav>
