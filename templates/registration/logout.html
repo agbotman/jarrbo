@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block main_panel %}
-<h1>You've been logged out.</h1>
-<p>Thanks for stopping by; when you come back, don't forget to <a href="/accounts/login/">log in</a> again.</p>
+{% load i18n %}
+<h3>{% trans "You've been logged out." %}</h3>
+<a class="btn btn-default" role="button" href="{% url 'auth_login' %}">{% trans "Login again." %}</a>
 {% endblock %}

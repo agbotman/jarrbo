@@ -26,6 +26,10 @@ ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
 # Crispy forms should use bootstrap3 markup
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+AUTHENTICATION_BACKENDS = (
+    'jarrbo.auth.EmailBackend',
+)
+
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -35,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'jarrbo',
     'bestuursmodel',
     'mptt',
@@ -116,6 +121,8 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'bestuursmodel.context_processors.afdelingen',
     'django.core.context_processors.request',
 )
+
+LOCALE_PATHS = (os.path.join(PROJECT_ROOT, "locale"),)
 
 ##################
 # LOCAL SETTINGS #

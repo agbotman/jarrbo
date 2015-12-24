@@ -1,1 +1,4 @@
-Activate your djangoproject.com account - you have {{ expiration_days }} days!
+{% load i18n %}
+{% blocktrans %}
+Activate your {{ site }} account - you have {{ expiration_days }} days!
+{% endblocktrans %}
