@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-19 16:46+0100\n"
+"POT-Creation-Date: 2016-01-07 15:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,15 +100,7 @@ msgstr "Opnieuw aanmelden."
 msgid "Your password was changed."
 msgstr ""
 
-#: templates/registration/password_change_form.html:10
-msgid "Please correct the error below."
-msgstr ""
-
-#: templates/registration/password_change_form.html:10
-msgid "Please correct the errors below."
-msgstr ""
-
-#: templates/registration/password_change_form.html:15
+#: templates/registration/password_change_form.html:7
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -116,24 +108,32 @@ msgstr ""
 "Voer uw wachtwoord 2x in, zodat we kunnen controleren dat u geen typefouten "
 "heeft gemaakt."
 
-#: templates/registration/password_change_form.html:43
-#: templates/registration/password_reset_confirm.html:16
-msgid "Change my password"
+#: templates/registration/password_change_form.html:16
+#: templates/registration/password_reset_confirm.html:6
+msgid "Change password"
 msgstr ""
 
 #: templates/registration/password_reset_complete.html:7
 msgid "Your password has been set.  You may go ahead and log in now."
 msgstr "Uw wachtwoord is ingesteld. U kunt u nu weer aanmelden."
 
-#: templates/registration/password_reset_confirm.html:6
-msgid "Change password"
-msgstr ""
-
 #: templates/registration/password_reset_confirm.html:8
+#, fuzzy
+#| msgid ""
+#| "Please enter your old password, for security's sake, and then enter your "
+#| "new password twice so we can verify you typed it in correctly."
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
+"Voer uw wachtwoord 2x in, zodat we kunnen controleren dat u geen typefouten "
+"heeft gemaakt."
+
+#: templates/registration/password_reset_confirm.html:16
+#, fuzzy
+#| msgid "Forgotten your password?"
+msgid "Change my password"
+msgstr "Uw wachtwoord vergeten?"
 
 #: templates/registration/password_reset_confirm.html:25
 msgid ""

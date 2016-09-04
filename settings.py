@@ -41,10 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sites',
     'jarrbo',
-    'bestuursmodel',
-    'mptt',
-    'sportlink',
-    'crispy_forms',
     'email_obfuscator',
 )
 
@@ -56,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -133,6 +130,7 @@ LOCALE_PATHS = (os.path.join(PROJECT_ROOT, "locale"),)
 # defined per machine.
 try:
     from local_settings import *
+    INSTALLED_APPS += LOCAL_APPS
 except ImportError:
     pass
 
