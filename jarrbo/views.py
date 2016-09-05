@@ -1,10 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from registration.backends.hmac.views import RegistrationView as HmacRegistrationView
-from jarrbo.forms import RegistrationForm
-
+from jarrbo.forms import RegistrationForm, ContactForm
+from django.core.mail import send_mail
 
 def jarrbo_home(request):
     return render(request, 'jarrbo_home.html',)
+    
+def ContactView(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, email, ['ton@jarrbo.nl'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('thanks/')
+    
+    return render(request, 'contact.html', {
+        'form': form,
+    })
+    
+def ThanksView(request):
+    return render(request, 'contact_thanks.html',)
+    
+def ProfileView(request):
+    return render(request, 'profile.html',)
     
 class RegistrationView(HmacRegistrationView):
     """
@@ -33,4 +59,5 @@ class RegistrationView(HmacRegistrationView):
         self.send_activation_email(new_user)
 
         return new_user
+
 

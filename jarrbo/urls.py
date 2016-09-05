@@ -7,12 +7,15 @@ Amended views for using email as the unique identifier and ignore the username f
 
 from django.conf.urls import url
 
-from jarrbo.views import RegistrationView
+from jarrbo.views import RegistrationView, ContactView, ThanksView, ProfileView
 from django.contrib.auth import views as auth_views
 from jarrbo.forms import PasswordResetFormJarrbo, SetPasswordFormJarrbo, PasswordChangeFormJarrbo
 
 
 urlpatterns = [
+    url(r'^contact/$', ContactView, name='contact'),
+    url(r'^contact/thanks', ThanksView, name='thanks'),
+    url(r'^profile/$', ProfileView, name='profile'),
     url(r'^register/$',
         RegistrationView.as_view(),
         name='registration_register'),

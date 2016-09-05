@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 from django import forms
 from django.utils.safestring import mark_safe
 
-            
 class JarrboForm():
     def as_jarrbo(self):
+        from django.forms.widgets import Textarea
+        textarea = Textarea()
         output = []
         html_input_attrs = ['value', 'readonly', 'disabled', 'size', 'maxlength',
                             'max_length', 'min_length',
@@ -16,6 +17,7 @@ class JarrboForm():
                             'list', 'min', 'max', 'multiple', 'pattern', 'placeholder', 
                             'required', 'step']
         label_row = '<label for="id_%s" class="col-sm-3 control-label">%s%s</label>'
+        input_textarea = '<div class="col-sm-9"><textarea class="form-control" id="id_%s" name="%s"></textarea></div>'
         input_start = '<div class="col-sm-9"><input class="form-control" type="%s" name=%s'
         input_end = '></div>'
         error_row = '<div class="col-sm-9 col-sm-offset-3 help-block">%s</div>'
@@ -29,23 +31,39 @@ class JarrboForm():
             else:
                 required = ''
             output.append(label_row % (field.name, field.label, required))
-            input_str = [input_start % (field.field.widget.input_type, field.name)]
-            for attr in html_input_attrs:
-                value = getattr(field.field,attr,None)
-                if value:
-                    if attr == 'max_length':
-                        input_str.append('maxlength=%s' % value)
-                    elif attr == 'min_length':
-                        input_str.append('minlength=%s' % value)
-                    else:
-                        input_str.append('%s=%s' % (attr, value))
-            input_str.append(input_end)
+            if type(field.field.widget) == type(textarea):
+                input_str = [input_textarea % (field.name, field.name)]
+            else:
+                input_str = [input_start % (field.field.widget.input_type, field.name)]
+                for attr in html_input_attrs:
+                    value = getattr(field.field,attr,None)
+                    if value:
+                        if attr == 'max_length':
+                            input_str.append('maxlength=%s' % value)
+                        elif attr == 'min_length':
+                            input_str.append('minlength=%s' % value)
+                        else:
+                            input_str.append('%s=%s' % (attr, value))
+                input_str.append(input_end)
             output.append(' '.join(input_str))
             if field.errors:
                 output.append(error_row % field.errors.as_text())
             output.append('</div>')
         return mark_safe('\n'.join(output))
 
+class ContactForm(forms.Form, JarrboForm):
+    email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(
+        required=True,
+        widget=forms.Textarea
+    )
+    
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+
+
+        
 class RegistrationForm(UserCreationForm, JarrboForm):
     """
     Form for registering a new user account.
@@ -87,4 +105,6 @@ class PasswordChangeFormJarrbo(PasswordChangeForm, JarrboForm):
     def __init__(self, user, *args, **kwargs):
         super(PasswordChangeFormJarrbo, self).__init__(user, *args, **kwargs)
         self.fields.keyOrder = ['old_password', 'new_password1', 'new_password2']
+
+
 
