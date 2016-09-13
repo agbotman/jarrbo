@@ -52,9 +52,10 @@ class JarrboForm():
         return mark_safe('\n'.join(output))
 
 class ContactForm(forms.Form, JarrboForm):
-    email = forms.EmailField(required=True)
-    subject = forms.CharField(required=True)
+    email = forms.EmailField(label=_("Your email address"), required=True)
+    subject = forms.CharField(label=_("Subject"), required=True)
     message = forms.CharField(
+        label=_("Message"),
         required=True,
         widget=forms.Textarea
     )

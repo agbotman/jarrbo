@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-07 15:05+0100\n"
+"POT-Creation-Date: 2016-09-05 13:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: jarrbo/forms.py:68
+#: jarrbo/forms.py:55
+msgid "Your email address"
+msgstr "Uw email adres"
+
+#: jarrbo/forms.py:56
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: jarrbo/forms.py:58
+msgid "Message"
+msgstr "Bericht"
+
+#: jarrbo/forms.py:87
 msgid "This email address is already registered. Did you forget your password?"
 msgstr "Dit email adres is al geregistreerd. Bent u uw wachtwoord vergeten?"
+
+#: jarrbo/templates/contact.html:5
+msgid "Jarrbo Contact Form"
+msgstr "Jarrbo contact formulier"
+
+#: jarrbo/templates/contact.html:12
+msgid "Submit"
+msgstr "Verzenden"
+
+#: jarrbo/templates/contact_thanks.html:5
+msgid "Email is send"
+msgstr "Email verstuurd"
+
+#: jarrbo/templates/contact_thanks.html:6
+msgid "Thanks for sending this email. We will respond as soon as possible"
+msgstr "Bedankt voor het versturen van dit bericht. Wij zullen zo spoedig moegelijk reageren"
 
 #: templates/registration/activation_complete.html:5
 msgid "Your account is activated now!"
@@ -210,9 +238,15 @@ msgstr ""
 "email adres. Dit bericht bevat tevens instructies om uw account te activeren."
 
 #: templates/registration/registration_form.html:5
-msgid "Register an account"
-msgstr "Registreer een account"
+msgid "Contact Form"
+msgstr ""
 
 #: templates/registration/registration_form.html:12
 msgid "Register"
 msgstr "Registreer"
+
+#~ msgid "Message text"
+#~ msgstr "Bericht"
+
+#~ msgid "Register an account"
+#~ msgstr "Registreer een account"
