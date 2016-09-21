@@ -1,11 +1,3 @@
-"""
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
 import django.conf.global_settings as DEFAULT_SETTINGS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -18,6 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = False
 
+# Set ALLOWED_HOSTS in local_settings
 ALLOWED_HOSTS = []
 
 # Settings for django-registration
