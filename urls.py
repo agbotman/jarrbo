@@ -1,20 +1,34 @@
-from django.conf.urls import patterns, include, url
+"""
+URL configuration for jarrbo project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
 from django.contrib import admin
-from jarrbo.views import jarrbo_home, ContactView, ThanksView, ProfileView
+#from django.urls import path
+from django.urls import re_path, include
+from django.conf.urls.i18n import i18n_patterns
 
-
+# implement optional trailing slash with /? (? behind /) in the regex pattern
+# the standard way (APPEND_SLASH default setting) fails 
+# because the not matching pattern will be consumed by the generic cms rule
 urlpatterns = [
-    url(r'^$', jarrbo_home, name='jarrbo_home'),
-    url(r'^contact/$', ContactView, name='contact'),
-    url(r'^contact/thanks', ThanksView, name='thanks'),
-    url(r'^profile/$', ProfileView, name='profile'),
-    url(r'^accounts/', include('jarrbo.urls')),
-    url(r'^accounts/', include('registration.backends.hmac.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    re_path(r'^admin/?', admin.site.urls),
+    re_path(r'^contributie/?', include('jarrbo_contributie.urls')),
+    re_path(r'^auth/?', include('jarrbo_auth.urls')),
 ]
 
-try:
-    from local_urls import local_urlpatterns
-    urlpatterns += local_urlpatterns
-except:
-    pass
+urlpatterns += i18n_patterns(
+    re_path(r'^profile/', include('jarrbo_profile.urls')),
+    re_path(r'^', include('cms.urls')),
+)
