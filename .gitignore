@@ -5,5 +5,6 @@
 *.sock
 local_settings.py
 local_urls.py
+secrets.json
 /init
 /static
