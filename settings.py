@@ -18,6 +18,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# URL prefix for static files.
+STATIC_URL = '/static/'
+# Location of static files on server
+STATIC_ROOT = '/var/www/jarrbo/static'
+
+# URL prefix for media files needed by django-cms
+MEDIA_URL = "/media/"
+# Location of media files on server
+MEDIA_ROOT = '/var/www/jarrbo/media'
+
+# Load the local and secret settings
 import json
 local_settings = BASE_DIR / 'local_settings.json'
 f = open(local_settings)
@@ -121,7 +132,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jarrbo.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -208,12 +218,6 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
