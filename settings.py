@@ -19,10 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 import json
-with open('secrets.json') as f:
-    SECRETS = json.load(f)
+local_settings = BASE_DIR / 'local_settings.json'
+f = open(local_settings)
+LOCALS = json.load(f)
 
-SECRET_KEY = SECRETS['SECRET_KEY']
+SECRET_KEY = LOCALS['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -129,9 +130,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': 'localhost',
         'PORT': 5432,
-        'NAME': 'jarrbo',
-        'USER': SECRETS[DB_USER],
-        'PASSWORD': SECRETS[DB_PASSWORD] ,
+        'NAME': LOCALS['DB_NAME'],
+        'USER': LOCALS['DB_USER'],
+        'PASSWORD': LOCALS['DB_PASSWORD'] ,
     }
 }
 
