@@ -165,6 +165,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#To ensure SSL requests are properly working with nginx proxying the requests to localhost
+#https://stackoverflow.com/questions/41483068/djangos-httpresponseredirect-is-http-instead-of-https
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Refer to the custom User model in jarrbo_auth
 # This model uses the email address as unique identifiable field
