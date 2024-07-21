@@ -23,11 +23,6 @@ STATIC_URL = '/static/'
 # Location of static files on server
 STATIC_ROOT = '/var/www/jarrbo/static'
 
-# URL prefix for media files needed by django-cms
-MEDIA_URL = "/media/"
-# Location of media files on server
-MEDIA_ROOT = '/var/www/jarrbo/media'
-
 # Load the local and secret settings
 import json
 local_settings = BASE_DIR / 'local_settings.json'
@@ -44,9 +39,6 @@ ALLOWED_HOSTS = LOCALS['ALLOWED_HOSTS']
 # Application definition
 
 INSTALLED_APPS = [
-    # djangocms_admin_style must be before django.contrib.admin
-    'djangocms_admin_style', 
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,32 +50,10 @@ INSTALLED_APPS = [
     'django_filters',  # for filtering view in django_contributie
 
     # internal packages
-    'jarrbo_djangocms',
     'jarrbo_theme',   # css extensions
-    'jarrbo_contributie_cms',  # must be before jarrbo_contributie
     'jarrbo_contributie',    # contributie applicatie
     'jarrbo_profile',
-    'jarrbo_auth_cms',
     'jarrbo_auth',
-
-    # apps related to django_cms
-    'django.contrib.sites',
-    'cms',
-    'menus',
-    'treebeard',      # to manage the page and plugin structure
-    'sekizai',        # static files management 
-    'filer',
-    'easy_thumbnails',
-    'mptt',
-    'djangocms_text_ckeditor',
-    'djangocms_link',
-    'djangocms_file',
-    'djangocms_picture',
-    'djangocms_video',
-    'djangocms_googlemap',
-    'djangocms_snippet',
-    'djangocms_style',
-    'djangocms_icon',
 
     'crispy_forms',   # easy control of django forms
     'crispy_bootstrap4', # bootstrap4 support for crispy_forms
@@ -100,13 +70,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-# Middleware for django-cms
-    'django.middleware.locale.LocaleMiddleware', 
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
-    'cms.middleware.utils.ApphookReloadMiddleware'
 ]
 
 ROOT_URLCONF = 'jarrbo.urls'
@@ -122,9 +85,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'sekizai.context_processors.sekizai',   # for django_cms               
-                'cms.context_processors.cms_settings',  # for django_cms
-                'django.template.context_processors.i18n', # for django_cms
             ],
         },
     },
@@ -195,32 +155,6 @@ USE_THOUSAND_SEPARATOR = True
 LOGIN_URL = '/auth/login/'
 # URL where requests are redirected after login when contrib.auth.login view gets no next parameter
 LOGIN_REDIRECT_URL = '/'
-
-# django_cms specific settings
-SITE_ID = 1
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-
-CMS_TEMPLATES = [
-    ('djangocms/fullwidth.html', 'Full width'),
-    ('djangocms/sidebar_left.html', 'Sidebar Left'),
-    ('djangocms/sidebar_right.html', 'Sidebar Right'),
-    ('djangocms/page.html', 'Page'),
-    ('djangocms/feature.html', 'Page with feature'),
-]
-
-# Enable Page permission mode
-CMS_PERMISSION = True
-
-THUMBNAIL_HIGH_RESOLUTION = True
-FILER_DEBUG=True
-
-THUMBNAIL_PROCESSORS = (
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
-)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -21,7 +21,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 # implement optional trailing slash with /? (? behind /) in the regex pattern
 # the standard way (APPEND_SLASH default setting) fails 
-# because the not matching pattern will be consumed by the generic cms rule
+# because the not matching pattern will be consumed by the generic rule of a removed package
 urlpatterns = [
     re_path(r'^admin/?', admin.site.urls),
     re_path(r'^contributie/?', include('jarrbo_contributie.urls')),
@@ -30,5 +30,4 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     re_path(r'^profile/', include('jarrbo_profile.urls')),
-    re_path(r'^', include('cms.urls')),
 )
