@@ -23,6 +23,11 @@ STATIC_URL = '/static/'
 # Location of static files on server
 STATIC_ROOT = '/var/www/jarrbo/static'
 
+# URL prefix for media files
+MEDIA_URL = '/media/'
+# Location of media files on server
+MEDIA_ROOT = '/var/www/jarrbo/media'
+
 # Load the local and secret settings
 import json
 local_settings = BASE_DIR / 'local_settings.json'
