@@ -153,7 +153,7 @@ LANGUAGE_CODE = 'nl'
 TIME_ZONE = 'Europe/Amsterdam'
 
 USE_I18N = True
-USE_L10N = True
+# USE_L10N = True   deprecation warning Django 4.2
 USE_TZ = True
 
 USE_THOUSAND_SEPARATOR = True
