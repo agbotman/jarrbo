@@ -33,6 +33,7 @@ import json
 local_settings = BASE_DIR / 'local_settings.json'
 f = open(local_settings)
 LOCALS = json.load(f)
+f.close()
 
 SECRET_KEY = LOCALS['SECRET_KEY']
 
