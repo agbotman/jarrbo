@@ -24,7 +24,8 @@ from django.conf.urls.i18n import i18n_patterns
 # because the not matching pattern will be consumed by the generic rule of a removed package
 urlpatterns = [
     re_path(r'^admin/?', admin.site.urls),
-    re_path(r'^contributie/?', include('jarrbo_contributie.urls')),
+#    re_path(r'^contributie/?', include('jarrbo_contributie.urls')),
+    re_path(r'^/?', include('jarrbo_contributie.urls')),
     re_path(r'^auth/?', include('jarrbo_auth.urls')),
 ]
 
